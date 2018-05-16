@@ -1,17 +1,17 @@
 <?php
 
-namespace kouosl\gallery\controllers\backend;
+namespace kouosl\map\controllers\backend;
 
-use kouosl\gallery\models\SLider;
+use kouosl\map\models\SLider;
 
 class DefaultController extends \kouosl\base\controllers\backend\BaseController
 {
     
     public function actionIndex()
     {
-        $gallery = new Gallery();
+        $map = new Map();
         return $this->render('index', [
-            'gallery' => $gallery,
+            'map' => $map,
         ]);
     }
 }

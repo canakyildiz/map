@@ -1,12 +1,12 @@
 <?php
 
-namespace kouosl\gallery\controllers\backend;
+namespace kouosl\map\controllers\backend;
 
-use kouosl\gallery\models\GalleryData;
-use kouosl\gallery\models\UploadImage;
+use kouosl\map\models\MapData;
+use kouosl\map\models\UploadImage;
 use Yii;
-use kouosl\gallery\models\Gallery;
-use kouosl\gallery\models\GallerySearch;
+use kouosl\map\models\Map;
+use kouosl\map\models\MapSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UnauthorizedHttpException;
@@ -15,9 +15,9 @@ use yii\web\UploadedFile;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 /**
- * GalleryController implements the CRUD actions for Gallery model.
+ * MapController implements the CRUD actions for Map model.
  */
-class GalleryController extends DefaultController
+class MapController extends DefaultController
 {
     public function behaviors()
     {
@@ -46,14 +46,14 @@ class GalleryController extends DefaultController
     	parent::init();
     }
 
-    public function actionGallery(){
+    public function actionMap(){
         $provider = new ActiveDataProvider([
-            'query' => Gallery::find(),
+            'query' => Map::find(),
             'pagination' => [
                 'pagesize' => 2,
             ],
         ]);
-        return $this->render('_gallery', [
+        return $this->render('_map', [
             'dataProvider' => $provider,
         ]);
     }
@@ -63,7 +63,7 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Lists all Gallery models.
+     * Lists all Map models.
      * @return mixed
      */
     public function actionManage()
@@ -71,7 +71,7 @@ class GalleryController extends DefaultController
     	
 
     	
-        $searchModel = new GallerySearch();
+        $searchModel = new MapSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('_manage', [
@@ -81,7 +81,7 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Displays a single Gallery model.
+     * Displays a single Map model.
      * @param integer $id
      * @return mixed
      */
@@ -95,7 +95,7 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Creates a new Gallery model.
+     * Creates a new Map model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -103,7 +103,7 @@ class GalleryController extends DefaultController
     {
 
     	
-        $model = new Gallery();
+        $model = new Map();
 
         $uploadImage = new UploadImage();
 
@@ -115,7 +115,7 @@ class GalleryController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('gallery', 'Gallery Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('map', 'Map Not Saved' )]);
 
                 return $this->render('_create', ['model' => $model]); // error
             }
@@ -132,7 +132,7 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Updates an existing Gallery model.
+     * Updates an existing Map model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -156,7 +156,7 @@ class GalleryController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('gallery', 'Gallery Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('map', 'Map Not Saved' )]);
 
                 return $this->render('_update', ['model' => $model]); // error
             }
@@ -173,7 +173,7 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Deletes an existing Gallery model.
+     * Deletes an existing Map model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -181,7 +181,7 @@ class GalleryController extends DefaultController
     public function actionDelete($id)
     {
 
-        GalleryData::deleteAll(['gallery_id' => $id]);
+        MapData::deleteAll(['map_id' => $id]);
 
         $model = $this->findModel($id);
 
@@ -196,15 +196,15 @@ class GalleryController extends DefaultController
     }
 
     /**
-     * Finds the Gallery model based on its primary key value.
+     * Finds the Map model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Gallery the loaded model
+     * @return Map the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Gallery::findOne($id)) !== null) {
+        if (($model = Map::findOne($id)) !== null) {
 
             return $model;
 

@@ -12,8 +12,8 @@ $form = ActiveForm::begin([
     'id' => 'login-form',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
-    <?= $form->field($gallery, 'title') ?>
-    <?= $form->field($gallery, 'date') ?>
+    <?= $form->field($map, 'title') ?>
+    <?= $form->field($map, 'date') ?>
 
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">

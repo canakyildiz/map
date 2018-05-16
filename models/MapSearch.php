@@ -1,15 +1,15 @@
 <?php
 
-namespace kouosl\gallery\models;
+namespace kouosl\map\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * GallerySearch represents the model behind the search form about `app\modules\gallery\models\Gallery`.
+ * MapSearch represents the model behind the search form about `app\modules\map\models\Map`.
  */
-class GallerySearch extends Gallery
+class MapSearch extends Map
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class GallerySearch extends Gallery
      */
     public function search($params)
     {
-        $query = gallery::find();
+        $query = map::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

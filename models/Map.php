@@ -1,25 +1,25 @@
 <?php
 
-namespace kouosl\gallery\models;
+namespace kouosl\map\models;
 
 use Yii;
 
 /**
- * This is the model class for table "gallery".
+ * This is the model class for table "map".
  *
  * @property int $id
  * @property string $title
  * @property string $description
  * @property string $date
  */
-class Gallery extends \yii\db\ActiveRecord
+class Map extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'gallery';
+        return 'map';
     }
 
     /**

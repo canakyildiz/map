@@ -5,12 +5,12 @@ namespace kouosl\map\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use kouosl\map\models\Map;
+use kouosl\map\models\Mapfeatures;
 
 /**
- * MapSearch represents the model behind the search form of `kouosl\map\models\Map`.
+ * MapfeaturesSearch represents the model behind the search form of `kouosl\map\models\Mapfeatures`.
  */
-class MapSearch extends Map
+class MapfeaturesSearch extends Mapfeatures
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class MapSearch extends Map
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'description', 'created_at'], 'safe'],
+            [['id', 'mapId'], 'integer'],
+            [['coordinate', 'tag'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class MapSearch extends Map
      */
     public function search($params)
     {
-        $query = Map::find();
+        $query = Mapfeatures::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +60,11 @@ class MapSearch extends Map
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
+            'mapId' => $this->mapId,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'coordinate', $this->coordinate])
+            ->andFilterWhere(['like', 'tag', $this->tag]);
 
         return $dataProvider;
     }

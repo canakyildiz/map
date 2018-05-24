@@ -5,47 +5,56 @@ namespace kouosl\map\models;
 use Yii;
 
 /**
- * This is the model class for table "map".
+ * This is the model class for table "{{%map}}".
  *
  * @property int $id
- * @property string $title
+ * @property string $name
  * @property string $description
- * @property string $date
+ * @property string $created_at
+ *
+ * @property Mapfeatures[] $mapfeatures
  */
 class Map extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'map';
+        return '{{%map}}';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'date'], 'required'],
-            [['id'], 'integer'],
-            [['title', 'description'], 'string'],
-            [['date'], 'safe'],
-            [['id'], 'unique'],
+            [['name', 'description'], 'required'],
+            [['description'], 'string'],
+            [['created_at'], 'safe'],
+            [['name'], 'string', 'max' => 200],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'name' => 'Name',
             'description' => 'Description',
-            'date' => 'Date',
+            'created_at' => 'Created At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMapfeatures()
+    {
+        return $this->hasMany(Mapfeatures::className(), ['mapId' => 'id']);
     }
 }

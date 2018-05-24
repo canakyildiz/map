@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model kouosl\map\models\Map */
+/* @var $model kouosl\map\models\Mapfeatures */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Maps', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Mapfeatures', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="map-view">
+<div class="mapfeatures-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'description:ntext',
-            'created_at',
+            'mapId',
+            'coordinate',
+            'tag:ntext',
         ],
     ]) ?>
 

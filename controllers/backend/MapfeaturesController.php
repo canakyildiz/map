@@ -3,16 +3,16 @@
 namespace kouosl\map\controllers\backend;
 
 use Yii;
-use kouosl\map\models\Map;
-use kouosl\map\models\MapSearch;
+use kouosl\map\models\Mapfeatures;
+use kouosl\map\models\MapfeaturesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MapController implements the CRUD actions for Map model.
+ * MapfeaturesController implements the CRUD actions for Mapfeatures model.
  */
-class MapController extends Controller
+class MapfeaturesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,57 +30,48 @@ class MapController extends Controller
     }
 
     /**
-     * Lists all Map models.
+     * Lists all Mapfeatures models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MapSearch();
+        $searchModel = new MapfeaturesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionShow()
-    {
-        $searchModel = new MapSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('show', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if (isset(Yii::$app->session['viewMapId'])) {
+            $param = Yii::$app->session['viewMapId'];
+            $dataProvider->query->andFilterWhere(['mapId'=>$param]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'id' => $param,
+            ]);
+         } else {
+            $param = null;
+            $this->redirect(array('/map/map'));
+         }
     }
 
     /**
-     * Displays a single Map model.
+     * Displays a single Mapfeatures model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        if (!Yii::$app->session->getIsActive()) {
-            Yii::$app->session->open();
-        }
-        Yii::$app->session['viewMapId'] = $id;
-        Yii::$app->session->close();
-        $this->redirect(array('/map/mapfeatures'));
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
-
-
     /**
-     * Creates a new Map model.
+     * Creates a new Mapfeatures model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Map();
+        $model = new Mapfeatures();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,7 +83,7 @@ class MapController extends Controller
     }
 
     /**
-     * Updates an existing Map model.
+     * Updates an existing Mapfeatures model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +103,7 @@ class MapController extends Controller
     }
 
     /**
-     * Deletes an existing Map model.
+     * Deletes an existing Mapfeatures model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -126,15 +117,15 @@ class MapController extends Controller
     }
 
     /**
-     * Finds the Map model based on its primary key value.
+     * Finds the Mapfeatures model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Map the loaded model
+     * @return Mapfeatures the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Map::findOne($id)) !== null) {
+        if (($model = Mapfeatures::findOne($id)) !== null) {
             return $model;
         }
 

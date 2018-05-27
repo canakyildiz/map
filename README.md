@@ -4,7 +4,7 @@ Oluşturduğumuz modül harita kullanırken bulmak istediğiniz yeri daha hızl�
 
 <h4>Kullanımı</h4>
 
-Ana klasörde bulunan composer.json dosyasının içindeki "repositories" kısmına eklemeniz gereken kod aşağıda verilmiştir.
+Ana proje klasörde bulunan "composer.json" dosyasının içindeki "repositories" kısmına eklemeniz gereken kod aşağıda verilmiştir.
         
         {
             "type": "vcs",

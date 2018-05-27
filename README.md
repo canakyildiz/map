@@ -1,5 +1,8 @@
 <h1>MAP MODÜLÜ</h1>
 
+Oluşturduğumuz modül harita kullanırken bulmak istediğiniz yeri daha hızlı bulmanıza yardımcı olmak için tasarlanmıştır.
+
+<h4>Kullanımı</h4>
 
 
 

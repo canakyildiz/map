@@ -17,6 +17,13 @@ ardından "require" kısmına ise
         
 eklenerek kurulum sağlanabilir.
 
+Giriş sağlandıktan sonra Creat map diyerek hazırda bulunmasını istediğiniz yeri tabloya ekleyebilirsiniz.
+Show map diyerek hazırda bulunan haritaları görüntüleyebilirsiniz.
+
+
+
+
+
 
 #map
 <h4>Kocaeli Üniversitesi Bilişim Sistemleri Mühendisliği Web Programlama dersi projesi "map" modülüdür.</h4>

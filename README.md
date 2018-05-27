@@ -1,5 +1,5 @@
 #map
-<h1>Kocaeli Üniversitesi Bilişim Sistemleri Mühendisliği Web Programlama dersi projesi "map" modülüdür.</h1>
+<h6>Kocaeli Üniversitesi Bilişim Sistemleri Mühendisliği Web Programlama dersi projesi "map" modülüdür.</h6>
 
 -Kurulum- 
 Başlangıçta Virtual Box ve Vagrant programı ile sanal makine kurulumu yapıldı.Portal.kouosl sayfasına giriş yapıldı ama sonra bi hata meydana geldi ve giriş yapılamadı bu nedenle yerel makine kurulumu ile devam edildi.

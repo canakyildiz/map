@@ -17,7 +17,7 @@ ardından "require" kısmına ise
         
 eklenerek kurulum sağlanabilir.
 
-Giriş sağlandıktan sonra Creat map diyerek hazırda bulunmasını istediğiniz yeri tabloya ekleyebilirsiniz.
+Giriş sağlandıktan sonra Creat map diyerek hazırda bulunmasını istediğiniz yeri tabloya ekleyebilirsiniz.</br>
 Show map diyerek hazırda bulunan haritaları görüntüleyebilirsiniz.
 
 
